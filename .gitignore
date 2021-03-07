@@ -1,0 +1,7 @@
+# Python compiled code
+*.pyc
+__pycache__/
+
+# Vim backupfiles
+*.swp
+*.swo
