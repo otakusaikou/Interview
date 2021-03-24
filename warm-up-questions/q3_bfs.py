@@ -36,26 +36,19 @@ current = root.right
 current.left = node(4)
 current.right = node(5)
 
-
-# O(V + E) (# of nodes + edges)
+# O(N)
 def bfs_trace(root):
-    if not root:
-        return None
-
-    unvis = []
-    vis = []
-    unvis.append(root)
-    while(unvis):
-        current = unvis[0]
-        if current.left:
-            unvis.append(current.left)
-
-        if current.right:
-            unvis.append(current.right)
-
-        vis.append(unvis.pop(0))
-
-    return list(map(lambda n: n.value, vis))
-
+    if root is None: return []
+    ans = []
+    q = [root]
+    while q:
+        for _ in range(len(q)):
+            curr = q.pop(0)
+            ans.append(curr.value)
+            if curr.left is not None:
+                q.append(curr.left)
+            if curr.right is not None:
+                q.append(curr.right)
+    return ans
 
 print(bfs_trace(root))
